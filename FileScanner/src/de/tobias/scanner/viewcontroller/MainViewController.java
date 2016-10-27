@@ -14,6 +14,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +25,10 @@ public class MainViewController extends NVC {
 
 	@FXML private TextField pathField;
 	@FXML private Button chooseButton;
+
+	@FXML private Label lineLabel;
+	@FXML private Label classLabel;
+	@FXML private Label interfaceLabel;
 
 	@FXML private TableView<FileItem> tableView;
 	@FXML private TableColumn<FileItem, Path> pathColumn;
@@ -46,6 +51,13 @@ public class MainViewController extends NVC {
 
 	private void updateItems() {
 		tableView.getItems().setAll(items);
+		int lineCount = items.stream().mapToInt(FileItem::getLines).sum();
+		long classCount = items.stream().filter(i -> i.getType() == Type.CLASS).count();
+		long interfaceCount = items.stream().filter(i -> i.getType() == Type.INTERFACE).count();
+
+		lineLabel.setText(String.valueOf(lineCount));
+		classLabel.setText(String.valueOf(classCount));
+		interfaceLabel.setText(String.valueOf(interfaceCount));
 	}
 
 	@FXML

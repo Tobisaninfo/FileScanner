@@ -15,6 +15,24 @@
             <Button fx:id="chooseButton" mnemonicParsing="false" onAction="#chooseHandler" text="Wählen" />
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+         <children>
+            <Label prefWidth="100.0" text="Zeilen gesamt:" />
+            <Label fx:id="lineLabel" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+         <children>
+            <Label prefWidth="100.0" text="Klassen:" />
+            <Label fx:id="classLabel" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+         <children>
+            <Label prefWidth="100.0" text="Interfaces:" />
+            <Label fx:id="interfaceLabel" />
+         </children>
+      </HBox>
       <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="pathColumn" prefWidth="300.0" text="Datei" />
