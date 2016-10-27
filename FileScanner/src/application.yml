@@ -1,0 +1,8 @@
+name: FileScanner
+version: b1.0.0
+build: 1
+identifier: de.tobias.filescanner
+main: de.tobias.scanner.FileScannerMain
+author: Tobias Ullerich
+backup: false
+iconPath: icon
