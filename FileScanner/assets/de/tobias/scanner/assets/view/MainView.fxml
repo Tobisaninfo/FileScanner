@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="14.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_LEFT" spacing="14.0">
@@ -40,6 +39,11 @@
           <TableColumn fx:id="typeColumn" minWidth="0.0" prefWidth="120.0" text="Typ" />
         </columns>
       </TableView>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="diagramButton" mnemonicParsing="false" onAction="#diagramHandler" text="Diagramm zeigen" />
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />

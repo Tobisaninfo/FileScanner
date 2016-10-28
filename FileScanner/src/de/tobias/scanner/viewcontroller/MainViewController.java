@@ -10,6 +10,7 @@ import de.tobias.scanner.FileItem;
 import de.tobias.scanner.Scanner;
 import de.tobias.scanner.Type;
 import de.tobias.utils.nui.NVC;
+import de.tobias.utils.nui.NVCStage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class MainViewController extends NVC {
 	@FXML private TableColumn<FileItem, Path> pathColumn;
 	@FXML private TableColumn<FileItem, Type> typeColumn;
 	@FXML private TableColumn<FileItem, Integer> lineColumn;
+
+	@FXML private Button diagramButton;
 
 	private List<FileItem> items;
 
@@ -73,5 +76,11 @@ public class MainViewController extends NVC {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@FXML
+	private void diagramHandler(ActionEvent event) {
+		ChartViewController controller = new ChartViewController(items);
+		controller.getStageContainer().ifPresent(NVCStage::show);
 	}
 }
