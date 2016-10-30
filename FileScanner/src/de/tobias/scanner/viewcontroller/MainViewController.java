@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import de.tobias.scanner.FileItem;
+import de.tobias.scanner.FileScannerMain;
 import de.tobias.scanner.Scanner;
 import de.tobias.scanner.Type;
 import de.tobias.utils.nui.NVC;
@@ -42,7 +43,13 @@ public class MainViewController extends NVC {
 
 	public MainViewController(Stage stage) {
 		load("de/tobias/scanner/assets/view", "MainView");
-		applyViewControllerToStage(stage);
+		NVCStage nvcStage = applyViewControllerToStage(stage);
+		FileScannerMain.stageIcon.ifPresent(nvcStage::setImage);
+	}
+
+	@Override
+	public void initStage(Stage stage) {
+		stage.setTitle("File Scanner");
 	}
 
 	@Override
