@@ -31,6 +31,7 @@ public class MainViewController extends NVC {
 	@FXML private Label lineLabel;
 	@FXML private Label classLabel;
 	@FXML private Label interfaceLabel;
+	@FXML private Label enumLabel;
 
 	@FXML private TableView<FileItem> tableView;
 	@FXML private TableColumn<FileItem, Path> pathColumn;
@@ -64,10 +65,12 @@ public class MainViewController extends NVC {
 		int lineCount = items.stream().mapToInt(FileItem::getLines).sum();
 		long classCount = items.stream().filter(i -> i.getType() == Type.CLASS).count();
 		long interfaceCount = items.stream().filter(i -> i.getType() == Type.INTERFACE).count();
+		long enumCount = items.stream().filter(i -> i.getType() == Type.ENUM).count();
 
 		lineLabel.setText(String.valueOf(lineCount));
 		classLabel.setText(String.valueOf(classCount));
 		interfaceLabel.setText(String.valueOf(interfaceCount));
+		enumLabel.setText(String.valueOf(enumCount));
 	}
 
 	@FXML

@@ -32,6 +32,12 @@
             <Label fx:id="interfaceLabel" />
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+         <children>
+            <Label prefWidth="100.0" text="Enums:" />
+            <Label fx:id="enumLabel" />
+         </children>
+      </HBox>
       <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="pathColumn" prefWidth="300.0" text="Datei" />
