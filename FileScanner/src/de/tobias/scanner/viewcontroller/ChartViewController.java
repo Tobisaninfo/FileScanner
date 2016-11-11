@@ -13,14 +13,17 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class ChartViewController extends NVC {
 
 	@FXML private BarChart<String, Integer> barChart;
 
-	public ChartViewController(List<FileItem> items) {
+	public ChartViewController(List<FileItem> items, Window owner) {
 		load("de/tobias/scanner/assets/view", "chartView");
 		NVCStage nvcStage = applyViewControllerToStage();
+		nvcStage.initOwner(owner);
+
 		FileScannerMain.stageIcon.ifPresent(nvcStage::setImage);
 
 		Map<Integer, Integer> result = map(items);

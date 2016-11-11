@@ -45,9 +45,10 @@
           <TableColumn fx:id="typeColumn" minWidth="0.0" prefWidth="120.0" text="Typ" />
         </columns>
       </TableView>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
          <children>
-            <Button fx:id="diagramButton" mnemonicParsing="false" onAction="#diagramHandler" text="Diagramm zeigen" />
+            <Button fx:id="diagramButtonLines" mnemonicParsing="false" onAction="#diagramHandlerLines" text="Diagramm zeigen (Zeilen)" />
+            <Button fx:id="diagramButtonType" mnemonicParsing="false" onAction="#diagramHandlerType" text="Diagramm zeigen (Typ)" />
          </children>
       </HBox>
    </children>

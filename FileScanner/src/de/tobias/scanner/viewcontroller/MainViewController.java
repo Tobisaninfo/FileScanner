@@ -38,7 +38,8 @@ public class MainViewController extends NVC {
 	@FXML private TableColumn<FileItem, Type> typeColumn;
 	@FXML private TableColumn<FileItem, Integer> lineColumn;
 
-	@FXML private Button diagramButton;
+	@FXML private Button diagramButtonLines;
+	@FXML private Button diagramButtonType;
 
 	private List<FileItem> items;
 
@@ -89,8 +90,14 @@ public class MainViewController extends NVC {
 	}
 
 	@FXML
-	private void diagramHandler(ActionEvent event) {
-		ChartViewController controller = new ChartViewController(items);
+	private void diagramHandlerLines(ActionEvent event) {
+		ChartViewController controller = new ChartViewController(items, getContainingWindow());
+		controller.getStageContainer().ifPresent(NVCStage::show);
+	}
+
+	@FXML
+	private void diagramHandlerType(ActionEvent event) {
+		PieChartViewController controller = new PieChartViewController(items, getContainingWindow());
 		controller.getStageContainer().ifPresent(NVCStage::show);
 	}
 }
