@@ -81,7 +81,7 @@ public class MainViewController extends NVC {
 		if (folder != null) {
 			try {
 				pathField.setText(folder.toString());
-				items = Scanner.scan(folder.toPath(), entry -> entry.toString().endsWith("java") || Files.isDirectory(entry));
+				items = Scanner.scan(folder.toPath(), entry -> entry.toString().endsWith("java") || entry.toString().endsWith("scala") || Files.isDirectory(entry));
 				updateItems();
 			} catch (IOException e) {
 				e.printStackTrace();
