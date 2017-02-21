@@ -20,6 +20,7 @@ public class Scanner {
 
 				List<String> readAllLines = Files.readAllLines(file);
 				for (String line : readAllLines) {
+					// Java
 					if (line.contains("public class") || line.contains("public abstract class") || line.contains("public final class")) {
 						type = Type.CLASS;
 					} else if (line.contains("public interface")) {
@@ -29,6 +30,18 @@ public class Scanner {
 					} else if (line.contains("public @interface")) {
 						type = Type.ANNOTATION;
 					}
+					
+					// Scala
+					if ((line.contains("class") || line.contains("object")) && line.contains("{")) {
+						type = Type.CLASS;
+					} else if ((line.contains("interface") || line.contains("trait")) && line.contains("{")) {
+						type = Type.INTERFACE;
+					} else if (line.contains("enum") && line.contains("{")) {
+						type = Type.ENUM;
+					} else if (line.contains("@interface")) {
+						type = Type.ANNOTATION;
+					}
+					
 					if (type != null)
 						break;
 				}
