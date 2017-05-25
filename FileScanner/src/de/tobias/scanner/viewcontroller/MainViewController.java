@@ -10,6 +10,7 @@ import de.tobias.scanner.FileItem;
 import de.tobias.scanner.FileScannerMain;
 import de.tobias.scanner.Scanner;
 import de.tobias.scanner.Type;
+import de.tobias.utils.application.ApplicationUtils;
 import de.tobias.utils.nui.NVC;
 import de.tobias.utils.nui.NVCStage;
 import javafx.beans.property.SimpleObjectProperty;
@@ -77,11 +78,18 @@ public class MainViewController extends NVC {
 	@FXML
 	private void chooseHandler(ActionEvent event) {
 		DirectoryChooser chooser = new DirectoryChooser();
+		try {
+			String path = ApplicationUtils.getApplication().getUserDefaults().getData("folder").toString();
+			chooser.setInitialDirectory(new File(path));
+		} catch (Exception e) {}
+
 		File folder = chooser.showDialog(getContainingWindow());
 		if (folder != null) {
 			try {
+				ApplicationUtils.getApplication().getUserDefaults().setData("folder", folder.toString());
 				pathField.setText(folder.toString());
-				items = Scanner.scan(folder.toPath(), entry -> entry.toString().endsWith("java") || entry.toString().endsWith("scala") || Files.isDirectory(entry));
+				items = Scanner.scan(folder.toPath(),
+						entry -> entry.toString().endsWith("java") || entry.toString().endsWith("scala") || Files.isDirectory(entry));
 				updateItems();
 			} catch (IOException e) {
 				e.printStackTrace();
